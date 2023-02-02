@@ -1,17 +1,15 @@
 <template>
   <div>
     <form @submit.prevent="submitForm">
-        <SfInput
-            value=""
-            label="Area to be covered (m²)"
-            name="area"
-            type="number"
-            valid
-            placeholder=""
-            v-model.number="m2"
-        />
-       <SfCheckbox
-        label="Include Wastage"
+      <SfInput
+        label="Area to be covered (m²)"
+        type="number"
+        valid
+        value=""
+        v-model.number="m2"
+      />
+      <SfCheckbox
+        label="Wastage"
         name="wastage"
         valid
         value=""
@@ -19,12 +17,16 @@
       />
       <button class="sf-button">Calculate</button>
     </form>
-    <div v-if="submitted && !error" class="calculated">
-      <p class="sf-price__regular">Total are in (m²): {{totalm2 }}</p>
-      <p class="sf-price__regular">Packages needed: {{packages }}</p>
-      <p class="sf-price__regular">Total Price:  ${{totalPrice }}</p>
+    <div v-if="submitted && !error">
+      <p class="sf-price__regular">Total area in m²: {{totalm2}}</p>
+      <p class="sf-price__regular">Packages needed: {{packages}}</p>
+      <p class="sf-price__regular">Total Price: ${{totalPrice}}</p>
     </div>
-    <SfAlert v-if="submitted && error" :type="'danger'" :message="'please input amount of area'"/>
+    <SfAlert 
+      v-if="submitted && error" 
+      :type="'danger'" 
+      :message="'please input amount of area'"
+    />
     <AAddToCart
       class="sf-add-to-cart__button"
       :qty="packages"
@@ -69,7 +71,6 @@
           this.error = true;
         } else this.error = false;
       },
-
       submitForm() {
         this.submitted = true;
         this.calculate();

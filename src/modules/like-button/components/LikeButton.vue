@@ -1,5 +1,5 @@
 <template>
-    <button @click="changeAction">{{ buttonState }}</button>
+    <button class="sf-button" @click="changeAction">{{ buttonState }}</button>
   </template>
   
   <script>
@@ -48,17 +48,4 @@
   
   <style scoped>
   
-  button {
-    font-family: 'Roboto', 'Raleway', sans-serif;
-    width: 20vw;
-    height: 8vh;
-    background-color:#5ece7b;
-    color:white;
-    border: none;
-    font-size: 1.1rem;
-  }
-  button:hover {
-    cursor:pointer;
-    box-shadow: 0 5px 3px -3px gray;
-  }
   </style>
